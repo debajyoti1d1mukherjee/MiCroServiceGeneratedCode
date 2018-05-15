@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Deployment           
+metadata:
+  name: balance                          
+spec:
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: balance                      
+    spec:
+      containers:                       
+      - name: balance                     
+        image: debajyotim\balance             
+        ports:
+        - containerPort: 8120           
+        env:
+        - name: EUREKA_URL
+          value: "http://eureka:admin@eureka-server:8761/eureka"
+          #value: "http://173.193.75.122:30875/eureka"
